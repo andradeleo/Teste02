@@ -1,8 +1,16 @@
+import { Outlet } from "react-router-dom";
+import Header from "../../components/Header";
+
+import { Container } from "./styles";
 
 export default function EquipmentsControl() {
   return (
-    <div>
-      Olá Mundo! EquipmentsControl aqui :)
-    </div>
+    <Container>
+      <Header
+        adicionar={"/add-equipment"}
+        editar={"/edit-equipment"}
+        excluir={"/remove-equipment"}
+      />
+    </Container>
   )
 }
