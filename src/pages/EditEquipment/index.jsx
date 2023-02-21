@@ -9,7 +9,12 @@ import useErrors from "../../hooks/useErrors";
 
 import { Container } from "./styles";
 
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import { DataContext } from "../../components/App";
+import { api } from "../../services/axios";
+import { toast } from "react-toastify";
 
 export default function EquipmentVisualize() {
   const [name, setName] = useState("")
@@ -18,7 +23,22 @@ export default function EquipmentVisualize() {
   const [date, setDate] = useState("")
   const [manufacturer, setManufacturer] = useState("")
 
-  const [loading,] = useState(false)
+  const [loading, setLoading] = useState(false);
+
+  const { id } = useParams();
+  const [dataEquipments] = useContext(DataContext)
+
+  useEffect(() => {
+    const editEquipment = dataEquipments.find((equipment) => {
+      return equipment._id == id
+    })
+
+    setName(editEquipment.name)
+    setPrice(editEquipment.price)
+    setSerieNumber(editEquipment.serieNumber)
+    setDate(editEquipment.date)
+    setManufacturer(editEquipment.manufacturer)
+  }, [])
 
   const { setError, removeError, getErrorMessageByFieldName, errors } = useErrors();
 
@@ -76,11 +96,30 @@ export default function EquipmentVisualize() {
     }
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true)
+
+    const editedEquipment = {
+      name,
+      price,
+      serieNumber,
+      date,
+      manufacturer
+    }
+    
+    try {
+      /* await api.put(`/equipments/${id}`, editedEquipment); */
+      toast.success("Equipamento Atualizado");
+    }catch(err) { console.log(err)}
+    finally{setLoading(false)}
+  }
+
   return (
     <Container>
       <BackHome path={"/equipments"}/>
 
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <FormGroup error={getErrorMessageByFieldName("name")}>
           <Input 
             value={name}
@@ -111,6 +150,7 @@ export default function EquipmentVisualize() {
             onChange={(e) => handleChangeDate(e)}
             placeholder="Data de fabricação"
             error={getErrorMessageByFieldName("date")}
+            type="date"
           />
         </FormGroup>
         <FormGroup error={getErrorMessageByFieldName("manufacturer")}>

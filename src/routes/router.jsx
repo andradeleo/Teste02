@@ -7,7 +7,6 @@ import Calls from "../pages/CallsControl"
 
 import AddEquipments from "../pages/AddEquipment";
 import EditEquipments from "../pages/EditEquipment";
-import RemoveEquipments from "../pages/RemoveEquipment";
 
 import AddCall from "../pages/AddCall";
 import EditCall from "../pages/EditCall"
@@ -32,23 +31,15 @@ export const router = createBrowserRouter([
     element: <AddEquipments />
   },
   {
-    path: "/edit-equipment",
+    path: "/edit-equipment/:id",
     element: <EditEquipments />
-  },
-  {
-    path: "/remove-equipment",
-    element: <RemoveEquipments />
   },
   {
     path: "/add-call",
     element: <AddCall />
   },
   {
-    path: "/edit-call",
+    path: "/edit-call/:id",
     element: <EditCall />
-  },
-  {
-    path: "/remove-call",
-    element: <RemoveEquipments />
-  },
+  }
 ])

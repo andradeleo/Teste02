@@ -1,9 +1,9 @@
 
 import { FormContainer } from "./styles";
 
-export default function Form({children}) {
+export default function Form({ onSubmit, children}) {
   return (
-    <FormContainer>
+    <FormContainer onSubmit={onSubmit}>
       { children }
     </FormContainer>
   );

@@ -7,17 +7,23 @@ import ButtonGroup from "../../components/ButtonGroup";
 
 import useErrors from "../../hooks/useErrors";
 
+import { DataContext} from "../../components/App"
+
 import { Container, TextArea } from "./styles";
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { api } from "../../services/axios";
+import { toast } from "react-toastify";
 
 export default function AddCall() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [equipment, setEquipment] = useState("");
   const [date, setDate] = useState("");
 
   const { setError, removeError, getErrorMessageByFieldName, errors } = useErrors();
 
-  const [loading ] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const isFormValid = title && description && date && errors.length == 0;
 
@@ -30,7 +36,6 @@ export default function AddCall() {
       removeError("title")
     }
   }
-
   function handleChangeDescription(e) {
     setDescription(e.target.value)
 
@@ -49,12 +54,52 @@ export default function AddCall() {
       removeError("date")
     }
   }
+  function handleChangeEquipment(e) {
+    setEquipment(e.target.value)
+    if(!e.target.value) {
+      setError({field: "equipment", message:"Equipamento é obrigatório"})
+    } else {
+      removeError("equipment")
+    }
+  }
+  const { id } = useParams();
+  const [, dataCalls] = useContext(DataContext)
+
+  useEffect(() => {
+    const editCall = dataCalls.find((call) => {
+      return call._id == id
+    })
+
+    setTitle(editCall.title)
+    setDescription(editCall.description)
+    setEquipment(editCall.equipment)
+    setDate(editCall.date)
+  
+  }, [])
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setLoading(true)
+
+    const editedCall = {
+      title,
+      description,
+      equipment,
+      date
+    }
+
+    try {
+      /* api.put(`/call/${id}`, editedCall ) */
+      toast.success("Chamado atualizado!")
+    }catch(err) {console.log(err)}
+    finally {setLoading(false)}
+  }
 
   return (
     <Container>
       <BackHome path={"/calls"}/>
       
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <FormGroup error={getErrorMessageByFieldName("title")}>
           <Input 
             value={title}
@@ -70,16 +115,24 @@ export default function AddCall() {
             error={getErrorMessageByFieldName("description")}
           />
         </FormGroup>
-      {/* aquele componente top */}
-      <FormGroup error={getErrorMessageByFieldName("date")}>
+        <FormGroup error={getErrorMessageByFieldName("equipment")}>
           <Input 
-            placeholder="Data de abertura"
-            value={date}
-            onChange={(e) => handleChangeDate(e)}
-            type={"date"}
-            error={getErrorMessageByFieldName("date")}
+            value={equipment}
+            onChange={(e) => handleChangeEquipment(e)}
+            placeholder="Equipamento"
+            error={getErrorMessageByFieldName("equipment")}
           />
         </FormGroup>
+  
+        <FormGroup error={getErrorMessageByFieldName("date")}>
+            <Input 
+              placeholder="Data de abertura"
+              value={date}
+              onChange={(e) => handleChangeDate(e)}
+              type={"date"}
+              error={getErrorMessageByFieldName("date")}
+            />
+          </FormGroup>
 
         <ButtonGroup
           isFormValid={Boolean(isFormValid)}

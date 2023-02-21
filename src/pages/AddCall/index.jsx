@@ -9,15 +9,19 @@ import useErrors from "../../hooks/useErrors";
 
 import { Container, TextArea } from "./styles";
 import { useState } from "react";
+import {toast} from "react-toastify"
+
+import { api } from "../../services/axios";
 
 export default function AddCall() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [equipment, setEquipment] = useState("");
   const [date, setDate] = useState("");
 
   const { setError, removeError, getErrorMessageByFieldName, errors } = useErrors();
 
-  const [loading ] = useState(false);
+  const [loading, setLoading ] = useState(false);
 
   const isFormValid = title && description && date && errors.length == 0;
 
@@ -30,7 +34,15 @@ export default function AddCall() {
       removeError("title")
     }
   }
+  function handleChangeEquipment(e) {
+    setEquipment(e.target.value)
 
+    if(!e.target.value) {
+      setError({field: "equipment", message:"Equipamento é obrigatório"})
+    } else {
+      removeError("equipment")
+    }
+  }
   function handleChangeDescription(e) {
     setDescription(e.target.value)
 
@@ -50,11 +62,29 @@ export default function AddCall() {
     }
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setLoading(true);
+
+    const newCall = {
+      title,
+      description,
+      equipment,
+      date
+    }
+
+    try {
+      await api.post("/calls", newCall )
+      toast.success("Novo chamado registrado!")
+    }catch(err) {console.log(err)}
+    finally{setLoading(false)}
+  }
+
   return (
     <Container>
       <BackHome path={"/calls"}/>
       
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <FormGroup error={getErrorMessageByFieldName("title")}>
           <Input 
             value={title}
@@ -70,7 +100,14 @@ export default function AddCall() {
             error={getErrorMessageByFieldName("description")}
           />
         </FormGroup>
-      {/* aquele componente top */}
+        <FormGroup error={getErrorMessageByFieldName("equipment")}>
+          <Input 
+            value={equipment}
+            onChange={(e) => handleChangeEquipment(e)}
+            placeholder="Equipamento (número de série)"
+            error={getErrorMessageByFieldName("equipment")}
+          />
+        </FormGroup>
       <FormGroup error={getErrorMessageByFieldName("date")}>
           <Input 
             placeholder="Data de abertura"

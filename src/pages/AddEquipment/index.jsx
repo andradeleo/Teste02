@@ -7,22 +7,28 @@ import Input from "../../components/Input/styles";
 
 import useErrors from "../../hooks/useErrors";
 
+import { toast } from "react-toastify";
+
 import { Container } from "./styles";
 
 import { useState } from "react";
+
+import { api } from "../../services/axios";
 
 export default function EquipmentVisualize() {
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
   const [serieNumber, setSerieNumber] = useState("")
-  const [date, setDate] = useState("")
+  const [date, setDate] = useState()
   const [manufacturer, setManufacturer] = useState("")
 
-  const [loading,] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const { setError, removeError, getErrorMessageByFieldName, errors } = useErrors();
 
   const isFormValid = name && price && serieNumber && date && manufacturer && errors.length == 0;
+
+
 
   function handleChangeName(e) {
     setName(e.target.value)   
@@ -76,11 +82,33 @@ export default function EquipmentVisualize() {
     }
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true) 
+
+    const newEquipment = {
+      name, 
+      price,
+      serieNumber,
+      date,
+      manufacturer
+    }
+
+    try {
+      api.post("/equipments", newEquipment)
+      toast.success("Equipamento adicionado!")
+
+    } catch(err) { console.log(err) }
+      finally { setLoading(false) }
+
+   
+  }
+  
   return (
     <Container>
       <BackHome path={"/equipments"}/>
 
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <FormGroup error={getErrorMessageByFieldName("name")}>
           <Input 
             value={name}
@@ -111,6 +139,7 @@ export default function EquipmentVisualize() {
             onChange={(e) => handleChangeDate(e)}
             placeholder="Data de fabricação"
             error={getErrorMessageByFieldName("date")}
+            type="date"
           />
         </FormGroup>
         <FormGroup error={getErrorMessageByFieldName("manufacturer")}>

@@ -1,15 +1,21 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  padding: 1.5rem;
+  padding: 1.5rem 4rem;
 
   background: #FFF;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 2rem;
+  border-bottom: 2px solid #e4e4e7;
+
+  h1 {
+    font-size: 1.3rem;
+    color: #171717;
+  }
   
   a {
     padding: .5rem 1rem;
