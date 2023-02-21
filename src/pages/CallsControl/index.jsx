@@ -5,10 +5,9 @@ export default function CallControl() {
   return (
     <div>
       <Header
-        visualizar={"/call-visualizar={}"}
-        adicionar={"/call-adicionar"}
-        editar={"/call-editar"}
-        excluir={"/call-excluir"}
+        adicionar={"/add-call"}
+        editar={"/edit-call"}
+        excluir={"/remove-call"}
       />
     </div>
   )
