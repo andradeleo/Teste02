@@ -1,12 +1,6 @@
 
 <!-- Status -->
 
-<!-- <h4 align="center"> 
-	🚧  Teste 02 🚀 Under construction...  🚧
-</h4> 
-
-<hr> -->
-
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
@@ -21,13 +15,13 @@
 
 ## :dart: About ##
 
-Projeto desenvolvido para o teste técnico da Academia do Programador. O desafio foi fazer um CRUD ( create, read, update and delte ) simulando um caso real, onde o "Junior" quer controlar os equipamentos e chamados dessa empresa.
+Projeto desenvolvido para o teste técnico da Academia do Programador. O desafio foi fazer um CRUD ( create, read, update and delete ) simulando um caso real, onde o "Junior" quer controlar os equipamentos e chamados da empresa dele.
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Feature 1: Melhorar o render, para atualizar a listagem é necessário recarregar a página.
+:heavy_check_mark: Feature 2: Melhorar a UI/UX do projeto.
+:heavy_check_mark: Feature 3: Adicionar um banco de dados. Utilizei a api crudcrud, portanto é possível apenas 2500 requests.
 
 ## :rocket: Technologies ##
 
@@ -44,6 +38,7 @@ The following tools were used in this project:
 - Axios
 - Phosphor react
 - React router dom
+- Api crudcrud
 
 
 ## :white_check_mark: Requirements ##
