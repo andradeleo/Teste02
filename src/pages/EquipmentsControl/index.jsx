@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import Header from "../../components/Header";
 import ContainerEachEquipment from "../../components/ContainerEachEquipment"
@@ -18,7 +18,21 @@ export default function EquipmentsControl() {
     }catch(err) { console.log(err)}
   }
 
-  const [dataEquipments] = useContext(DataContext)
+  let [dataEquipments] = useContext(DataContext)
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const res = await api.get("/equipments")
+        dataEquipments = res.data
+      } catch(err) {
+        console.log(err)
+      }
+    }
+    getData()
+  }, [])
+
+
 
   return (
     <Container>

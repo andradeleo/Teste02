@@ -6,6 +6,9 @@ import {Container, Content} from "./styles";
 
 import { DataContext } from "../../components/App";
 
+import {api } from "../../services/axios"
+import { toast } from "react-toastify";
+
 
 export default function CallControl() {
 

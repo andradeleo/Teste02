@@ -7,7 +7,7 @@ export const StyledSide = styled.div`
 
   padding: 4rem 2rem; 
 
-  background-color: blue;
+  background-color: #FAFAFA;
 
   @media (max-width: 780px) {
       padding: 4rem 1rem;
