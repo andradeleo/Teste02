@@ -106,7 +106,7 @@ export default function EquipmentVisualize() {
   
   return (
     <Container>
-      <BackHome path={"/equipments"}/>
+      <BackHome path={"/"}/>
 
       <Form onSubmit={handleSubmit}>
         <FormGroup error={getErrorMessageByFieldName("name")}>
