@@ -27,7 +27,7 @@ export const Content = styled.div`
     letter-spacing: 1.1px;
   }
 
-  span {
+  .message-dashboard-null {
     text-align: center;
     margin-top: 12rem;
     color: #e4e4e7;

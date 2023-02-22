@@ -109,7 +109,7 @@ export default function EquipmentVisualize() {
     }
     
     try {
-      /* await api.put(`/equipments/${id}`, editedEquipment); */
+      await api.put(`/equipments/${id}`, editedEquipment);
       toast.success("Equipamento Atualizado");
     }catch(err) { console.log(err)}
     finally{setLoading(false)}

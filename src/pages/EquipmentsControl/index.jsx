@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 import Header from "../../components/Header";
 import ContainerEachEquipment from "../../components/ContainerEachEquipment"
@@ -7,11 +7,13 @@ import { Container, Content } from "./styles";
 import { DataContext } from "../../components/App";
 import { toast } from "react-toastify";
 
+import { api } from "../../services/axios";
+
 export default function EquipmentsControl() {
 
   async function handleRemoveEquipment(id) {
     try {
-      /* api.delete(`/equipments/${id}`) */
+      await api.delete(`/equipments/${id}`)
       toast.success("Equipamento removido!")
     }catch(err) { console.log(err)}
   }
@@ -29,7 +31,7 @@ export default function EquipmentsControl() {
         {
           dataEquipments.length == 0
           ?
-          <span>Nenhum equipamento cadastrado :(</span>
+          <span className="message-dashboard-null">Nenhum equipamento cadastrado :(</span>
           :
           <h2>Todos os equipamentos</h2>
         }

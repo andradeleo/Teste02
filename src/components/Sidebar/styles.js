@@ -23,7 +23,6 @@ export const StyledSide = styled.div`
       margin: .5rem 0;
 
       border-radius: .5rem;
-      
 
       span {
         font-size: 1.1rem;
@@ -31,10 +30,14 @@ export const StyledSide = styled.div`
         letter-spacing: 1.2px;
 
         color: #18181b;
+
+        @media (max-width: 780px) {
+          display: none;
+          
+        }
       }
 
-      &:hover {
-        
+      &:hover {        
         background-color: #f4f4f5;
       }
     }

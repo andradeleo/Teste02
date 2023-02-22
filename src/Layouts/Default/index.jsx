@@ -8,7 +8,7 @@ export default function Main() {
   return (
     <Layout>
       <Sidebar />
-
+      
       <div>
         <Outlet />
       </div>

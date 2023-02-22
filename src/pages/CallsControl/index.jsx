@@ -9,11 +9,11 @@ import { DataContext } from "../../components/App";
 
 export default function CallControl() {
 
-  const [, dataCalls] = useContext(DataContext)
+  const [dataEquipments, dataCalls] = useContext(DataContext)
 
   async function handleRemoveCall(id) {
     try {
-        /* api.delete(`/calls/${id}`) */
+        await api.delete(`/calls/${id}`)
         toast.success("Chamado removido!")
     }catch(err) { console.log(err)}
 
@@ -30,7 +30,7 @@ export default function CallControl() {
         {
           dataCalls.length == 0
           ?
-          <span>Nenhum chamado cadastrado :(</span>
+          <span className="message-dashboard-null">Nenhum chamado cadastrado :(</span>
           :
           <h2>Todos os chamados</h2>
         }

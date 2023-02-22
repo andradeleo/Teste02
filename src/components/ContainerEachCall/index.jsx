@@ -21,7 +21,7 @@ export default function ContainerEachCall({infos, onRemove}) {
     <Container>
       <div className="infos">
         <div><span>{infos.title}</span></div>
-        <div><span>{equipmentFromCall.name}</span></div>
+        <div><span>{equipmentFromCall?.name}</span></div>
         <div><span>{infos.date}</span></div>
         <div><strong>{daysPassed > 0 ? `Aberto há ${daysPassed} dia(s)` : "Há menos de um dia" }</strong></div>
       </div>

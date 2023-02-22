@@ -95,7 +95,7 @@ export default function EquipmentVisualize() {
     }
 
     try {
-      api.post("/equipments", newEquipment)
+      await api.post("/equipments", newEquipment)
       toast.success("Equipamento adicionado!")
 
     } catch(err) { console.log(err) }

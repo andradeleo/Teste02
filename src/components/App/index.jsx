@@ -11,7 +11,7 @@ export default function App() {
   const [dataEquipments, setDataEquipments ] = useState([]);
   const [dataCalls, setDataCalls ] = useState([]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     async function getData() {
       try {
         const res = await api.get("/equipments")
@@ -21,9 +21,9 @@ export default function App() {
       }
     }
     getData()
-  }, []) */
+  }, [])
 
-  /* useEffect(() => {
+  useEffect(() => {
     async function getData() {
       try {
         const res = await api.get("/calls")
@@ -33,7 +33,7 @@ export default function App() {
       }
     }
     getData()
-  }, []) */
+  }, [])
 
   return (
     <DataContext.Provider value={[dataEquipments, dataCalls]}>

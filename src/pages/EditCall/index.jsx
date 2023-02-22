@@ -89,7 +89,7 @@ export default function AddCall() {
     }
 
     try {
-      /* api.put(`/call/${id}`, editedCall ) */
+      await api.put(`/call/${id}`, editedCall )
       toast.success("Chamado atualizado!")
     }catch(err) {console.log(err)}
     finally {setLoading(false)}
