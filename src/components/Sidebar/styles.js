@@ -21,15 +21,12 @@ export const StyledSide = styled.div`
       align-items: center;
   }
 
-
     a {
       display: flex;
       align-items: center;
       gap: 16px;
 
-      padding: 1rem;
-      margin: .5rem 0;
-
+      padding: .7rem 1rem;
       border-radius: .5rem;
 
       span {
@@ -44,10 +41,12 @@ export const StyledSide = styled.div`
           
         }
       }
-
-      &:hover {        
-        background-color: #f4f4f5;
-      }
     }
   }
+`;
+
+export const LinkContainerNav = styled.div`
+  background: ${({ isActive}) => isActive ? "#7c3aed" : "transparent"};
+  border-radius: .5rem;
+  margin: .5rem 0;
 `;
