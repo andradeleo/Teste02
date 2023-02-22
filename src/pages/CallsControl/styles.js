@@ -25,6 +25,11 @@ export const Content = styled.div`
     font-size: 1.7rem;
     font-weight: 500;
     letter-spacing: 1.1px;
+
+    @media (max-width: 780px) {
+        text-align: center; 
+        font-size: 1rem;
+    }
   }
 
   .message-dashboard-null {

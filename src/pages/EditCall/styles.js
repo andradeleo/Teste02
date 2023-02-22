@@ -20,7 +20,12 @@ export const TextArea = styled.textarea`
   width: 100%;
   height: 12rem;
   margin: .5rem 0px;
-  border-radius: 4px; 
+  border-radius: 4px;
+  padding: .5rem 1rem;
+
+  @media (max-width: 780px) {
+      height: 6rem;
+  } 
 
   ${({ error }) => error && css`
     color: #F24C00;

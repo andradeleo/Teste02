@@ -13,7 +13,7 @@ export default function ContainerEachCall({infos, onRemove}) {
 
   const equipmentFromCall = dataEquipments.find((equipment) => {
     return equipment.serieNumber == infos.equipment
-  }) 
+  })
 
   const daysPassed = calculateDays(infos.date)
 

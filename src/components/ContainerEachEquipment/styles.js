@@ -16,6 +16,11 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 780px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   &:hover {
     border-color: #8b5cf6;
   }
@@ -26,10 +31,19 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 780px) {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      gap: .5rem;
+      padding: 0;
+      margin-bottom: .5rem;
+  }  
    
     div {
       max-width: 300px;
-      width: 40%;      
+      width: 40%;     
     }
   }
 
@@ -37,5 +51,9 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     gap: 16px;
+
+    button {
+      background: transparent;
+    }
   }
 `;

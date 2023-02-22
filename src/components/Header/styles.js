@@ -12,9 +12,19 @@ export const StyledHeader = styled.header`
   gap: 2rem;
   border-bottom: 2px solid #e4e4e7;
 
+  @media (max-width: 968px) {
+    justify-content: center;
+    gap: 1rem;
+  } 
+
   h1 {
     font-size: 1.3rem;
     color: #171717;
+
+    @media (max-width: 780px) {
+        text-align: center; 
+        font-size: 1rem;
+    }
   }
   
   a {

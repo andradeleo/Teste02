@@ -3,15 +3,23 @@ import styled from "styled-components";
 
 export const StyledSide = styled.div`
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 
-  padding: 4rem 2rem;
+  padding: 4rem 2rem; 
 
-  background-color: #FAFAFA;
+  background-color: blue;
+
+  @media (max-width: 780px) {
+      padding: 4rem 1rem;
+  }
 
   ul {
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 780px) {
+      align-items: center;
+  }
 
 
     a {
