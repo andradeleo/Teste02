@@ -40,6 +40,11 @@ The following tools were used in this project:
 - React router dom
 - Api crudcrud
 
+## :dart: Challenge ##
+
+O desafio foi implementar conceitos atuais e mais modernos do React, como SPA (single page application), onde o objetivo é evitar renderizar inúmeros componentes desnecessariamente, no projeto em questão a sidebar, onde ela aparece na página de equipamentos e de chamados, logo a aplicação fica mais dinâmica mudando somente o 
+"assunto principal".
+
 
 ## :white_check_mark: Requirements ##
 
