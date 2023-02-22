@@ -1,7 +1,6 @@
-
 import { Link } from "react-router-dom";
 
-import {StyledSide } from "./styles";
+import { StyledSide } from "./styles";
 import { Chat, DeviceTabletSpeaker } from "phosphor-react";
 
 export default function Sidebar() {
@@ -9,7 +8,7 @@ export default function Sidebar() {
     <StyledSide>
       <nav>
         <ul>
-          <Link to={"/equipments"}>
+          <Link to={"/"}>
             <DeviceTabletSpeaker size={24} color="#18181b" weight="bold" />
             <span>Equipamentos</span>
           </Link>
@@ -20,5 +19,5 @@ export default function Sidebar() {
         </ul>
       </nav>
     </StyledSide>
-  )
+  );
 }
