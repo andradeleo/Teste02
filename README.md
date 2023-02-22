@@ -21,7 +21,7 @@
 
 ## :dart: About ##
 
-Describe your project
+Projeto desenvolvido para o teste técnico da Academia do Programador. O desafio foi fazer um CRUD ( create, read, update and delte ) simulando um caso real, onde o "Junior" quer controlar os equipamentos e chamados dessa empresa.
 
 ## :sparkles: Features ##
 
@@ -33,11 +33,18 @@ Describe your project
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+- React
+- Styled components
+
+## :rocket: Libs ##
+
+The following tools were used in this project:
+
+- React toastify
+- Axios
+- Phosphor react
+- React router dom
+
 
 ## :white_check_mark: Requirements ##
 
@@ -47,26 +54,18 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/teste-02
-
-# Access
-$ cd teste-02
+$ git clone https://github.com/andradeleo/teste-02
 
 # Install dependencies
-$ yarn
+$ npm install
 
 # Run the project
-$ yarn start
+$ npm run dev
 
-# The server will initialize in the <http://localhost:3000>
 ```
 
-## :memo: License ##
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
-
-
-Made with :heart: by <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">{{YOUR_NAME}}</a>
+Made with :heart: by <a href="https://github.com/andradeleo" target="_blank">Leonardo Andrade</a>
 
 &#xa0;
 
