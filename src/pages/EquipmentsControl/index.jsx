@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 import Header from "../../components/Header";
 import ContainerEachEquipment from "../../components/ContainerEachEquipment"
@@ -11,29 +11,15 @@ import { api } from "../../services/axios";
 
 export default function EquipmentsControl() {
 
+  let [dataEquipments] = useContext(DataContext) 
+ 
   async function handleRemoveEquipment(id) {
     try {
       await api.delete(`/equipments/${id}`)
       toast.success("Equipamento removido!")
     }catch(err) { console.log(err)}
   }
-
-  let [dataEquipments] = useContext(DataContext)
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        const res = await api.get("/equipments")
-        dataEquipments = res.data
-      } catch(err) {
-        console.log(err)
-      }
-    }
-    getData()
-  }, [])
-
-
-
+  
   return (
     <Container>
       <Header 
