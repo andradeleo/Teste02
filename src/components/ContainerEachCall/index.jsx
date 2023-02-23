@@ -9,7 +9,7 @@ import { Textbox, TrashSimple } from "phosphor-react";
 import { calculateDays } from "../../utils/days";
 
 export default function ContainerEachCall({infos, onRemove}) {
-  const [dataEquipments] = useContext(DataContext);
+  const {dataEquipments} = useContext(DataContext);
 
   const equipmentFromCall = dataEquipments.find((equipment) => {
     return equipment.serieNumber == infos.equipment

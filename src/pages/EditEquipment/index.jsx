@@ -26,7 +26,7 @@ export default function EquipmentVisualize() {
   const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
-  const [dataEquipments] = useContext(DataContext)
+  const {dataEquipments} = useContext(DataContext)
 
   useEffect(() => {
     const editEquipment = dataEquipments.find((equipment) => {

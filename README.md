@@ -17,7 +17,7 @@ Projeto desenvolvido para o teste técnico da Academia do Programador. O desafio
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1: Melhorar o render, para atualizar a listagem é necessário recarregar a página.\
+:heavy_check_mark: Feature 1: Melhorar o render, para atualizar a listagem é necessário recarregar a página. (resolvido)\
 :heavy_check_mark: Feature 2: Melhorar a UI/UX do projeto.\
 :heavy_check_mark: Feature 3: Adicionar um banco de dados. Utilizei a api crudcrud, portanto é possível apenas 2500 requests.\
 

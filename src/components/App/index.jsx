@@ -3,7 +3,6 @@ import React, {createContext, useEffect, useState} from 'react'
 
 import { RouterProvider } from "react-router-dom"
 import { router } from "../../routes/router"
-import { api } from '../../services/axios';
 
 export let DataContext = createContext();
 
@@ -16,32 +15,15 @@ export default function App() {
     {title: "Chamada 1", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, accusamus.", equipment: "Broca", date:"2023-02-15", _id: "111A"},
   ]);
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        const res = await api.get("/equipments")
-        setDataEquipments(res.data)
-      } catch(err) {
-        console.log(err)
-      }
-    }
-    getData()
-  }, [])
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        const res = await api.get("/calls")
-        setDataCalls(res.data)
-      } catch(err) {
-        console.log(err)
-      }
-    }
-    getData()
-  }, [])
+  function updateEquipments(dataEquipments) {
+    setDataEquipments(dataEquipments)
+  }
+  function updateCalls(dataEquipments) {
+    setDataCalls(dataEquipments)
+  } 
 
   return (
-    <DataContext.Provider value={[dataEquipments, dataCalls]}>
+    <DataContext.Provider value={{dataEquipments, dataCalls, updateEquipments, updateCalls}}>
      <RouterProvider router={router} />
     </DataContext.Provider>
   )

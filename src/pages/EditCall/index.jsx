@@ -63,7 +63,7 @@ export default function AddCall() {
     }
   }
   const { id } = useParams();
-  const [, dataCalls] = useContext(DataContext)
+  const {dataCalls} = useContext(DataContext)
 
   useEffect(() => {
     const editCall = dataCalls.find((call) => {

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import Header from "../../components/Header";
 import ContainerEachEquipment from "../../components/ContainerEachEquipment"
@@ -11,7 +11,19 @@ import { api } from "../../services/axios";
 
 export default function EquipmentsControl() {
 
-  let [dataEquipments] = useContext(DataContext) 
+  const { dataEquipments, updateEquipments } = useContext(DataContext);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const res = await api.get("/equipments")
+        updateEquipments(res.data)
+      } catch(err) {
+        console.log(err)
+      }
+    }
+    getData()
+  }, [dataEquipments])
  
   async function handleRemoveEquipment(id) {
     try {

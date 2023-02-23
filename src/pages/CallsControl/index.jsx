@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Header from "../../components/Header";
 import ContainerEachCall from "../../components/ContainerEachCall";
 
@@ -12,14 +12,25 @@ import { toast } from "react-toastify";
 
 export default function CallControl() {
 
-  const [dataEquipments, dataCalls] = useContext(DataContext)
+  const {dataCalls, updateCalls } = useContext(DataContext);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const res = await api.get("/calls")
+        updateCalls(res.data)
+      } catch(err) {
+        console.log(err)
+      }
+    }
+    getData()
+  }, [dataCalls])
 
   async function handleRemoveCall(id) {
     try {
         await api.delete(`/calls/${id}`)
         toast.success("Chamado removido!")
     }catch(err) { console.log(err)}
-
   }
 
   return (
